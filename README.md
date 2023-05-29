@@ -82,9 +82,4 @@ En Madrid, los más relevantes en cuanto a sus efectos para la salud son:
     - Mayor dificultad para respirar con normalidad, sobre todo al hacer ejercicio.
     - Mayor susceptibilidad a las infecciones respiratorias.
     - Ataques de asma y agravamiento de ésta y otras enfermedades  respiratorias, como el enfisema o la bronquitis crónica.
-
-
-
-
-
-
+   
