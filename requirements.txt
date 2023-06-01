@@ -9,4 +9,3 @@ scipy
 mysql-connector-python
 sqlalchemy
 ydata-profiling
-openpyxl
