@@ -13,127 +13,175 @@
 
 # RECOGIDA DE DATOS: PORTAL DEL AYUNTAMIENTO DE MADRID
 
-1. Datasets calidad del aire
+1.  CALIDAD DEL AIRE
     https://datos.madrid.es/sites/v/index.jsp?vgnextoid=aecb88a7e2b73410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD
 
-2. Dataset datos metereológicos
+    * Datos horarios desde 2001
+    En este conjunto de datos puede obtener la información recogida por las estaciones de control de calidad del aire, con los datos horarios por anualidades desde 2001.
+
+    * Estaciones de control
+    En este conjunto de datos se reflejan todas las estaciones fijas de la red de vigilancia de la calidad del aire del Ayuntamiento de Madrid y sus metadatos asociados.
+
+2. Metereología 
     https://datos.madrid.es/sites/v/index.jsp?vgnextoid=fa8357cec5efa610VgnVCM1000001d4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD
+
+    * Datos horarios desde 2019
+    En este conjunto de datos puede obtener la información recogida por las estaciones meteorológicas, con los datos horarios, horarios por anualidades desde enero de 2019.
+
+    * Estaciones de control
+    En este conjunto de datos puede obtener la ubicación de todas las estaciones de control que pueden medir lo siguientes parametros:
+
+    81 - VELOCIDAD VIENTO
+    82 - DIR. DE VIENTO
+    83 - TEMPERATURA
+    86 - HUMEDAD RELATIVA
+    87 - PRESION BARIOMETRICA
+    88 - RADIACION SOLAR
+    89 - PRECIPITACIÓN
 
 # INTERPRETACIÓN DATASETS:
 
-1.  Dataset calidad del aire
-* Documentación de referencia 
-    https://datos.madrid.es/FWProjects/egob/Catalogo/MedioAmbiente/Aire/Ficheros/Interprete_ficheros_%20calidad_%20del_%20aire_global.pdf
+1.  CALIDAD DEL AIRE
+    * Datos horarios desde 2019
+      - Documentación de referencia 
+        https://datos.madrid.es/FWProjects/egob/Catalogo/MedioAmbiente/Aire/Ficheros/Interprete_ficheros_%20calidad_%20del_%20aire_global.pdf
 
-    * Interpretación columnas:
-        - Provincia: Código de Provincia 
-        - Municipio: Código de Municipio
-        - Estación: Ubicación de las estaciones de medida
-        - Magnitud: Parámetro contaminantebmedido
-        - Punto_de_muestreo: Código estación completo (provincia,municipio y estación) más magnitud y técnica de medida
-        - año: año
-        - mes: mes 
-        - día: día   
-        - h: indica el valor de la magnitud contaminante correspondiente. 
-            “h01” hace referencia a la 1 de la mañana, 
-            “h02” a las 2 de la mañana, y así sucesivamente hasta las 24h
-        - v01, ..., v024: Validación de la h01, ..., h024.Dónde:
+      - Interpretación columnas:
+        PROVINCIA: Código de Provincia 
+        MUNICIPIO: Código de Municipio
+        ESTACION: Ubicación de las estaciones de medida
+        MAGNITUD: Parámetro contaminantebmedido
+        PUNTO_DE_MUESTREO: Código estación completo (provincia,municipio y estación) más magnitud y técnica de medida
+        AÑO: año
+        MES: mes 
+        DIA: día   
+        H: indica el valor de la magnitud contaminante correspondiente. 
+            “H01” hace referencia a la 1 de la mañana, 
+            “H02” a las 2 de la mañana, y así sucesivamente hasta las 24h
+        V01, ..., V024: Validación de la H01, ..., H024.Dónde:
             "V" hace referencia a valor válido
             "N" a valor no válido
 
-    * MAGNITUDES DE MEDIDA DE LOS CONTAMINANTES ATMOSFÉRICOS.
-                                        Técnica de medida
-        - 01 SO2: Dióxido de Azufre     38 Fluorescencia ultravioleta
-        - 08 NO2: Dióxido de Nitrógeno  08 Quimioluminiscencia  
-        - 09 PM2.5: Partículas < 2.5 μm 47 Microbalanza
-        - 10 PM10: Partículas < 10 μm   47 Microbalanza
-        - 14 O3: Ozono                  06 Absorción ultravioleta 
+        - Magnitudes de medida de los contaminantes atmosféricos
+          Se han seleccionado los siguientes contaminantes atmósfericos porque son los que se necesitan para calcular el índice de calidad del aire (ICA)
+            MAGNITUD    DESCRIPCION                TECNICA DE MEDIDA
+            01          SO2: Dióxido de Azufre     38 Fluorescencia ultravioleta
+            08          NO2: Dióxido de Nitrógeno  08 Quimioluminiscencia  
+            09          PM2.5: Partículas < 2.5 μm 47 Microbalanza
+            10          PM10: Partículas < 10 μm   47 Microbalanza
+            14          O3: Ozono                  06 Absorción ultravioleta 
 
-    *  ESTACIONES DE MEDIDA
-        01. 28079004: Pza. de España
-        02. 28079008: Escuelas Aguirre
-        03. 28079011 Av. Ramón y Caja
-        04. 28079016 Arturo Soria
-        05. 28079017 Villaverde Alto
-        06. 28079018 C/ Farolillo
-        07. 28079024 Casa de Campo
-        08. 28079027 Barajas
-        09. 28079035 Pza. del Carmen
-        10. 28079036 Moratalaz 
-        11. 28079038 Cuatro Caminos  
-        12. 28079039 Barrio del Pilar
-        13. 28079040 Vallecas
-        14. 28079047 Méndez Álvaro 
-        15. 28079048 Pº. Castellana 
-        16. 28079049 Retiro 
-        17. 28079050 Pza. Castilla 
-        18. 28079054 Ensanche Vallecas 
-        19. 28079055 Urb. Embajada (Barajas) 
-        20. 28079056 Plaza Elíptica 
-        21. 28079057 Sanchinarro 
-        22. 28079058 El Pardo 
-        23. 28079059 Parque Juan Carlos I 
-        24. 28079060 Tres Olivos 
+    * Estaciones de control 
+      - Documentación de referencia 
+        https://datos.madrid.es/FWProjects/egob/Catalogo/MedioAmbiente/Aire/Ficheros/Estructura_C.A.Estaciones.pdf
 
-2. Dataset datos metereológicos
+      - Interpretación columnas
+        CODIGO: Código nacional de cada estación 
+        CODIGO_CORTO: Últimas dos cifras del código nacional
+        ESTACION: Nombre de la estación
+        DIRECCION: Dirección postal cercana o aproximada
+        LONGITUD_ETRS89: Longitud geográfica expresada en el sistema ETRS 89
+        LATITUD_ETRS89: Latitud geográfica expresada en el sistema ETRS 89
+        ALTITUD Altitud topográfica expresada en metros sobre el nivel del mar.
+        COD_TIPO: Código tipo de estación UT/UF/ S
+        NOM_TIPO: Nombre tipo de estación Urbana de Tráfico/Urbana de Fondo/Suburbana
+        NO2: Dióxido de nitrógeno X indica que se mide ese parámetro
+        SO2: Dióxido de azufre X indica que se mide ese parámetro
+        CO: Monóxido de carbono X indica que se mide ese parámetro
+        PM10: Partículas PM10 X indica que se mide ese parámetro
+        PM2_5: Partículas PM2.5 X indica que se mide ese parámetro
+        O3: Ozono X indica que se mide ese parámetro
+        BTX: Hidrocarburos aromáticos:Benceno, Tolueno, Etilbenceno. X indica que se mide ese parámetro
+        COD_VIA: Código de vía.
+        VIA_CLASE: Descripción del tipo de vía Calle, Avenida, Plaza, etc.
+        VIA_PAR: Descripción parcial del tipo de vía
+        VIA_NOMBRE: Nombre de la vía
+        Fecha alta: Fecha de alta de la estación
+        COORDENADA_X_ETRS89: Coordenada geográfica X expresada en el sistema ETRS 89
+        COORDENADA_Y_ETRS89: Coordenada geográfica Y expresada en el sistema ETRS 89
+        LONGITUD: Longitud geográfica en grados decimales
+        LATITUD Latitud geográfica en grados decimales
+
+      - Estaciones de control
+        Seleccionamos las siguientes estaciones de control porque son las que coinciden con las estaciones de control de los datos metereológicos ya que nos permitirá realizar las relaciones entre los datos de calidad del aire y los datos metereológicos.
+
+        28079008: Escuelas Aguirre  URBANA TRAFICO
+        28079018 C/ Farolillo       URBANA FONDO
+        28079024 Casa de Campo      SUBURBANA
+        28079035 Pza. del Carmen    URBANA FONDO
+        28079036 Moratalaz          URBANA TRAFICO
+
+2. METEREOLOGÍA
+    * Datos horarios desde 2019
     Los datos meteorológicos que se proporcionan en estos ficheros son exclusivamente para evaluar la calidad del aire medida por la Red de Calidad del Aire de la Comunidad de Madrid. Los datos meteorológicos oficiales son los proporcionados por la Agencia Estatal de Meteorología (AEMET).
 
-    * Documentación de referencia 
+    - Documentación de referencia 
         https://datos.madrid.es/FWProjects/egob/Catalogo/MedioAmbiente/DatosMeteorologicos/Ficheros/Interpretaci%C3%B3n_datos_meteorologicos.pdf
 
-    * Interpretación columnas:
-        - Provincia: Código de Provincia 
-        - Municipio: Código de Municipio
-        - Estación_en_municipio: Ubicación de las estaciones de medida
-        - Magnitud: Parámetro metereológico medido
-        - Punto_de_muestreo: Código estación completo (provincia,municipio y estación) más magnitud y técnica de medida
-        - año: año
-        - mes: mes 
-        - día: día   
-        - h: indica el valor de la magnitud meteorológica correspondiente. 
-            “h01” hace referencia a la 1 de la mañana, 
-            “h02” a las 2 de la mañana, y así sucesivamente hasta las 24h
-        - v01, ..., v024: Validación de la h01, ..., h024.Dónde:
+    - Interpretación columnas:
+        PROVINCIA: Código de Provincia 
+        MUNICIPIO: Código de Municipio
+        ESTACION: Ubicación de las estaciones de medida
+        MAGNITUD: Parámetro metereológico medido
+        PUNTO_DE_MUESTREO: Código estación completo (provincia,municipio y estación) más magnitud y técnica de medida
+        AñO: año
+        MES: mes 
+        DIA: día   
+        H: indica el valor de la magnitud meteorológica correspondiente. 
+            “H01” hace referencia a la 1 de la mañana, 
+            “H02” a las 2 de la mañana, y así sucesivamente hasta las 24h
+        V01, ..., V024: Validación de la H01, ..., H024.Dónde:
             "V" hace referencia a valor válido
             "N" a valor no válido
 
-    * CÓDIGOS DE MEDIDAS DE LOS DATOS METEREOLOGICOS:
-                                    TECNICA UNIDAD DESCRIPCIÓN_UNIDAD
-        80: RADIACIÓN ULTRAVIOLETA  89      m/s     metros por segundo
-        81: VELOCIDAD DEL VIENTO    89      Grd     grados
-        82: DIRECCIÓN DEL VIENTO    89      ºc      grados centígrados  
-        83: TEMPERATURA             89      %       porcentaje
-        86: HUMEDAD RELATIVA        89      mbar    milibar
-        88: RADIACIÓN SOLAR         89      W/m2    vatios por metro cuadrado
-        89: PRECIPITACIÓN           89      l/m2    litros por metro cuadrado 
+    - Magnitudes de medida de los datos metereológicos:
+        MAGNITUD    DESCRIPCION             TECNICA UNIDAD DESCRIPCIÓN_UNIDAD
+        80          RADIACIÓN ULTRAVIOLETA  89      m/s     metros por segundo
+        81          VELOCIDAD DEL VIENTO    89      Grd     grados
+        82          DIRECCIÓN DEL VIENTO    89      ºc      grados centígrados  
+        83          TEMPERATURA             89      %       porcentaje
+        86          HUMEDAD RELATIVA        89      mbar    milibar
+        88          RADIACIÓN SOLAR         89      W/m2    vatios por metro cuadrado
+        89          PRECIPITACIÓN           89      l/m2    litros por metro cuadrado 
 
-    # Códigos estaciones:
-        CODIGO   CODIGO     NOMBRE
-        NACIONAL MUNICIPIO  ESTACION
-        28005002 5          ALCALÁ DE HENARES
-        28006004 6          ALCOBENDAS
-        28007004 7          ALCORCÓN
-        28009001 9          ALGETE
-        28013002 13         ARANJUEZ
-        28014002 14         ARGANDA DEL REY
-        28016001 16         EL ATAZAR
-        28045002 45         COLMENAR VIEJO
-        28047002 47         COLLADO VILLALBA
-        28049003 49         COSLADA
-        28058004 58         FUENLABRADA
-        28065014 65         GETAFE
-        28067001 67         GUADALIX DE LA SIERRA
-        28074007 74         LEGANÉS
-        28080003 80         MAJADAHONDA
-        28092005 92         MÓSTOLES
-        28102001 102        ORUSCO DE TAJUÑA
-        28120001 120        PUERTO DE COTOS
-        28123002 123        RIVAS-VACIAMADRID
-        28133002 133        SAN MARTÍN DE VALDEIGLESIAS
-        28148004 148        TORREJÓN DE ARDOZ
-        28161001 161        VALDEMORO
-        28171001 171        VILLA DEL PRADO
-        28180001 180        VILLAREJO DE SALVANÉS
+    * Estaciones de control
+    En este conjunto de datos se reflejan todas las ubicaciones de los sensores meteorológicos pertenecientes al Sistema Integral de Vigilancia, Predicción e Información de la Calidad del Aire del Ayuntamiento de Madrid y sus metadatos asociados.
+
+    - Documentación de referencia
+        https://datos.madrid.es/FWProjects/egob/Catalogo/MedioAmbiente/DatosMeteorologicos/Ficheros/Estructura_Estaciones%20meteorol%C3%B3gicas.pdf
+
+    - Interpretacion de las columnas
+        CODIGO: Código nacional de cada estación
+        CODIGO_CORTO: Últimas dos cifras del código nacional
+        ESTACION: Nombre de la estación
+        DIRECCION: Dirección postal cercana o aproximada
+        LONGITUD_ETRS89: Longitud geográfica expresada en el sistema ETRS 89
+        LATITUD_ETRS89: Latitud geográfica expresada en el sistema ETRS 89
+        ALTITUD: Altitud topográfica expresada en metros sobre el nivel del mar.
+        VV: Velocidad de viento expresada en m/s
+        DV: Dirección del viento expresada en grados sexagesimales Entre 0 y 359 º (0=N, 90=E,180=S, 270=O)
+        T: Temperatura expresada en grados celsius.
+        HR: Humedad relativa expresada en % Entre 0 y 100%
+        PB: Presión barométrica expresada en milibares.
+        RS: Radiación solar expresada en w/m2
+        P: Lluvia. Precipitación acumulada en mm. (equivalente a l/m2)
+        COD_VIA: Código de vía.
+        VIA_CLASE: Descripción del tipo de vía Calle, Avenida, Plaza, etc.
+        VIA_PAR: Descripción parcial del tipo de vía
+        VIA_NOMBRE: Nombre de la vía
+        NUM_VÍA: Número postal aproximado.
+        COORDENADA_X_ETRS89: Coordenada geográfica X expresada en el sistema ETRS 89
+        COORDENADA_Y_ETRS89 Coordenada geográfica Y expresada en el sistema ETRS 89
+        LONGITUD Longitud geográfica en grados decimales
+        LATITUD Latitud geográfica en grados decimales
+
+    - Estaciones de control
+        28079008 Escuelas Aguirre
+        28079018 Farolillo
+        28079024 Casa de Campo
+        28079035 Plaza del Carmen
+        28079036 Moratalaz
+
 
 # ANÁLISIS PRELIMINAR
 Este análisis preliminar nos permite determinar que varibles incluiremos en en análisis definitivo.
@@ -243,26 +291,19 @@ ICA = (30 + 100 + 50 + 50) / 4 = 57.5
 En este ejemplo ficticio, el índice de calidad del aire en Madrid sería de aproximadamente 57.5.
 
 
-- CODIGO DE EJEMPLO PARA CALCULAR ICA.
-    # Crear función calcular_ICA
-        def calcular_ICA(concentraciones, valores_limites):
-            num_contaminantes = len(concentraciones)
-            ica_total = 0
-            
-            for i in range(num_contaminantes):
-                ica_contaminante = (concentraciones[i] / valores_limites[i]) * 100
-                ica_total += ica_contaminante
-            
-            ica_promedio = ica_total / num_contaminantes
-            return ica_promedio
+# TIPOLOGIA ESTACIONES DE MEDIDA DE LOS CONTAMINANTES
+Las estaciones que miden la calidad del aire en Madrid se clasifican en diferentes categorías según su ubicación y los contaminantes que monitorean. Estas categorías incluyen estaciones urbanas de tráfico, estaciones urbanas de fondo y estaciones suburbanas.
 
-        # Datos de concentraciones de contaminantes ficticios en Madrid
-        concentraciones = [15, 40, 25, 60]  # SO2, NO2, PM10, O3
-        valores_limites = [50, 40, 50, 120]  # SO2, NO2, PM10, O3
+* Estaciones Urbanas de Tráfico: 
+    Estas estaciones se encuentran en áreas de alta densidad de tráfico y monitorean principalmente los contaminantes relacionados con las emisiones de los vehículos, como dióxido de nitrógeno (NO2), partículas en suspensión (PM10 y PM2.5) y monóxido de carbono (CO). Son representativas de la calidad del aire en áreas donde el tráfico es intenso, como calles principales y avenidas transitadas.
 
-        # Calcular el índice de calidad del aire
-        ica = calcular_ICA(concentraciones, valores_limites)
-        print("El índice de calidad del aire en Madrid es:", ica)
+* Estaciones Urbanas de Fondo: 
+    Estas estaciones se ubican en áreas urbanas, pero no necesariamente cerca de vías de tráfico intenso. Monitorean una gama más amplia de contaminantes atmosféricos, incluidos los contaminantes primarios como el dióxido de nitrógeno (NO2), las partículas en suspensión (PM10 y PM2.5), el ozono (O3) y el dióxido de azufre (SO2). Estas estaciones proporcionan información sobre la calidad del aire en zonas urbanas más generales, no específicamente relacionadas con el tráfico.
+
+* Estaciones Suburbanas: 
+    Estas estaciones se encuentran en áreas residenciales o rurales a las afueras de la ciudad. Monitorean contaminantes similares a las estaciones urbanas de fondo, pero su ubicación en áreas menos urbanizadas permite evaluar la calidad del aire en entornos menos influenciados por el tráfico y otras fuentes de contaminación urbana.
+
+En resumen, las estaciones urbanas de tráfico se enfocan en los contaminantes relacionados con el tráfico vehicular, las estaciones urbanas de fondo monitorean una gama más amplia de contaminantes en áreas urbanas generales y las estaciones suburbanas proporcionan información sobre la calidad del aire en áreas residenciales o rurales a las afueras de la ciudad.
 
 # ESTRUCTURA DEL PROYECTO:
 1.  DATA 
@@ -273,10 +314,25 @@ En este ejemplo ficticio, el índice de calidad del aire en Madrid sería de apr
     * metereología:
     Carpeta con los csv originales referentes a la metereología en en año 2022/meses recogidos por la estaciones:
         - Estaciones_control_datos_metereológicos.csv
-    * Datos ya procesados con las columnas que nos interesan
+    * aux: 
+    Carpetea con los csv ya procesados con las columnas que nos interesan
         - aire_2022.csv
         - metee_2022.csv
+    * Dataset final, en el que nos basamos para el análisis:
+        - calidad_aire_2022.cvs
+    
 2. NOTEBOOKS
+    * Preparacion_dataset
+    Carpeta con los notebooks necesarios para la creacción del dataset final sobre el que ser realizará el análisis
+      - 1.Creaccion_columnas_aire.ipynb
+      - 2.Creaccion_columnas_metereología.ipynb
+      - 3.Fusion_datasets.ipynb
+    * 1.Tratamiento_nulos.ipynb
+    * 2.Tratamiento_outliers.ipynb
+    * 3.Analisis_descriptivo.ipynb
+    * 4.Analisis_univariante.ipynb
+    * 5.Analisis_bivariante.ipynb
+    * 6.Analisis_multivariante.ipynb
 
 
 
