@@ -1,3 +1,5 @@
+from sklearn.linear_model import LinearRegression
+
 def calcular_ICA(data):
     '''
     Función para calcular el índíce de calidad del aire (ICA)
@@ -41,3 +43,21 @@ def calc_missing(df):
         total_count = df.shape[0]
         null_percent = (null_count / total_count) * 100
         print(f'{col} {null_count} / {total_count}= {null_percent:.2f} %')
+        
+def fill_missing_values(df, columna):
+    '''
+    Función para rellenar los valores faltantes por una predicción de valores a partir de un modelo de regresión lineal
+    '''
+    df_known = df[df[columna].notnull()]
+    df_unknown = df[df[columna].isnull()]
+    
+    X_known = df_known[['ANO', 'MES', 'DIA', 'HORA']]
+    y_known = df_known[columna]
+    
+    model = LinearRegression()
+    model.fit(X_known, y_known)
+    
+    X_unknown = df_unknown[['ANO', 'MES', 'DIA', 'HORA']]
+    predicted_values = model.predict(X_unknown)
+    
+    df.loc[df[columna].isnull(), columna] = predicted_values.round(2)
