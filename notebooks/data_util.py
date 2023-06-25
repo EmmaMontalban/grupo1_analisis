@@ -1,36 +1,40 @@
 from sklearn.linear_model import LinearRegression
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
 
-def calcular_ICA(data):
-    '''
-    Función para calcular el índíce de calidad del aire (ICA)
-    
-    Para ello primero calcula el indice de calidad del aire para cata contaminante atmosférico
-    - ICA_SO2 = (Concentración_SO2 / Valor_Límite_SO2) * 100, Valor límite = 125 μg/m3
-    - ICA_NO2 = (Concentración_NO2 / Valor_Límite_NO2) * 100, Valor límite = 40 μg/m3
-    - ICA_PM10 = (Concentración_PM10 / Valor_Límite_PM10) * 100, Valor límite = 50 μg/m3
-    - ICA_O3 = (Concentración_O3 / Valor_Límite_O3) * 100, Valor límite = 120 μg/m3
-    
-    Luego promedia los valores de ICA de los cuatro contaminantes para obtener el índice de calidad del aire (ICA) general
-    - ICA = (ICA_SO2 + ICA_NO2 + ICA_PM10 + ICA_O3) / 4)
-    '''
+'''
+Función para calcular el índíce de calidad del aire (ICA)
+
+Para ello primero calcula el indice de calidad del aire para cata contaminante atmosférico
+- ICA_SO2 = (Concentración_SO2 / Valor_Límite_SO2) * 100, Valor límite = 125 μg/m3
+- ICA_NO2 = (Concentración_NO2 / Valor_Límite_NO2) * 100, Valor límite = 40 μg/m3
+- ICA_PM10 = (Concentración_PM10 / Valor_Límite_PM10) * 100, Valor límite = 50 μg/m3
+- ICA_O3 = (Concentración_O3 / Valor_Límite_O3) * 100, Valor límite = 120 μg/m3
+
+Luego promedia los valores de ICA de los cuatro contaminantes para obtener el índice de calidad del aire (ICA) general
+- ICA = (ICA_SO2 + ICA_NO2 + ICA_PM10 + ICA_O3) / 4)
+'''
+def calcular_ICA(df):
+
     concentraciones = ['SO2', 'PM10', 'O3', 'NO2']
     valores_limites = [125, 50, 120, 40]  # Valores límite de los contaminantes
     
     ica_columnas = ['ICA_SO2', 'ICA_PM10', 'ICA_O3', 'ICA_NO2']
     
     for i, concentracion in enumerate(concentraciones):
-        ica_contaminante = (data[concentracion] / valores_limites[i]) * 100
-        data[ica_columnas[i]] = ica_contaminante.round(2)
+        ica_contaminante = (df[concentracion] / valores_limites[i]) * 100
+        df[ica_columnas[i]] = ica_contaminante.round(2)
     
-    ica_promedio = data[ica_columnas].mean(axis=1)
-    data['ICA'] = ica_promedio.round(2)
+    ica_promedio = df[ica_columnas].mean(axis=1)
+    df['ICA'] = ica_promedio.round(2)
         
-    return data
+    return df
 
+'''
+Función que calcula el porcentaje de valores nulos en cada columna
+'''
 def calc_missing(df):
-    '''
-    Método que calcula el porcentaje de valores nulos en cada columna
-    '''
+
     missing_columns =[col for col in df.columns if df[col].isnull().sum() > 0]
     
     # Esta es otra opcion
@@ -44,20 +48,27 @@ def calc_missing(df):
         null_percent = (null_count / total_count) * 100
         print(f'{col} {null_count} / {total_count}= {null_percent:.2f} %')
         
-def fill_missing_values(df, columna):
-    '''
-    Función para rellenar los valores faltantes por una predicción de valores a partir de un modelo de regresión lineal
-    '''
-    df_known = df[df[columna].notnull()]
-    df_unknown = df[df[columna].isnull()]
+
+'''
+Función que devuelve las una lista con las columnas que tienen valores nulos
+'''
+def obtener_columnas_con_nulos(df):
+    columnas_con_nulos = []
+
+    for columna in df.columns:
+        if df[columna].isnull().any():
+            columnas_con_nulos.append(columna)
     
-    X_known = df_known[['ANO', 'MES', 'DIA', 'HORA']]
-    y_known = df_known[columna]
+    return columnas_con_nulos
+
+'''
+Función que rellena los datos faltante con una predicción a partir de una regresión
+'''
+def rellenar_nulos_regresion(df, columns):
+    imp_iter = IterativeImputer(random_state=42)
     
-    model = LinearRegression()
-    model.fit(X_known, y_known)
+    for column in columns:
+        df[column] = imp_iter.fit_transform(df[[column]])
     
-    X_unknown = df_unknown[['ANO', 'MES', 'DIA', 'HORA']]
-    predicted_values = model.predict(X_unknown)
-    
-    df.loc[df[columna].isnull(), columna] = predicted_values.round(2)
+    return df
+
