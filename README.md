@@ -2,7 +2,7 @@
     Emma Montalbán
     Erika Samara Alvares
     Juan Carlos Menendez Gijón
-    Francisco Polonio Monterroso
+    
 
 # TEMÁTICA: Calidad del aire en Madrid año 2022 (por día y hora)
 
