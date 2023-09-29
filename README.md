@@ -4,7 +4,7 @@
     Juan Carlos Menendez Gijón
     
 
-# TEMÁTICA: Calidad del aire en Madrid año 2022 (por día y hora)
+# TEMÁTICA: Calidad del aire en Madrid año 2022 (por día y hora) 
 
 # OBJETIVO:
 1. Escenario: Modelo predictivo de los efectos de la calidad del aire en la salud.
